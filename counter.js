@@ -16,11 +16,20 @@ class TryCounter extends HTMLElement {
     }
 
     attributeChangedCallback(prop, oldVal, newVal) {
-        if (prop === 'count') this.render();
+        if (prop === 'count') 
+            this.render();
+            let btn = this.shadow.querySelector('#btn');
+            btn.addEventListener('click', this.inc.bind(this));
+    }
+
+    inc() {
+        this.count++;
     }
 
     connectedCallback() {
         this.render();
+        let btn = this.shadow.querySelector('#btn');
+        btn.addEventListener('click', this.inc.bind(this));
     }
 
     render() {
